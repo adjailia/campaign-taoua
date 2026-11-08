@@ -601,17 +601,27 @@
     window.requestAnimationFrame(step);
   }
 
+  function joinersLabel(value) {
+    if (value <= 1) return "منضمّ";
+    if (value <= 10) return "منضمّين";
+    return "منضمّاً";
+  }
+
   function initJoiners() {
     var counter = $("#joiners-count");
     if (!counter) return;
 
+    var label = $("#joiners-label");
     var cached = 0;
     try {
       cached = parseInt(localStorage.getItem(JOINERS_CACHE) || "0", 10) || 0;
     } catch (err) {
       cached = 0;
     }
-    if (cached > 0) counter.textContent = formatCount(cached);
+    if (cached > 0) {
+      counter.textContent = formatCount(cached);
+      if (label) label.textContent = joinersLabel(cached);
+    }
 
     if (!window.fetch) return;
 
@@ -639,6 +649,7 @@
         if (!isFinite(value) || value < 0) throw new Error("bad payload");
 
         animateCount(counter, cached, value);
+        if (label) label.textContent = joinersLabel(value);
         try {
           localStorage.setItem(JOINERS_CACHE, String(value));
           sessionStorage.setItem("taoua-joiners-seen", "1");
