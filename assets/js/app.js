@@ -173,6 +173,7 @@
 
     renderTitle(data.title, data.title_highlight);
     setText("party", data.party);
+    setText("party_short", data.party_short);
     setText("municipality", data.municipality);
     setText("election", data.election);
     setText("badge", data.badge);
