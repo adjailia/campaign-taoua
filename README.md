@@ -24,7 +24,6 @@
 │   ├── program.md              # محاور البرنامج الانتخابي
 │   ├── contact.md              # الهاتف، واتساب، البريد، العنوان، الشبكات الاجتماعية
 │   └── submissions.md          # سجل المنضمين (يُنشأ بالتصدير — غير مرفوع إلى Git)
-├── .github/workflows/pages.yml # نشر تلقائي على GitHub Pages
 ├── .nojekyll                   # تعطيل معالجة Jekyll
 ├── .gitattributes              # توحيد نهايات الأسطر (LF/CRLF)
 ├── .gitignore
@@ -169,7 +168,7 @@ npx serve .
 
 ## النشر على GitHub Pages
 
-### الطريقة 1 — تلقائية (مستحسنة)
+### الطريقة 1 — من الفرع مباشرة (المستخدمة حالياً)
 
 1. أنشئ مستودعاً على GitHub وارفع المشروع:
 
@@ -181,13 +180,18 @@ git remote add origin https://github.com/USERNAME/REPO.git
 git push -u origin main
 ```
 
-2. من المستودع: **Settings → Pages → Source = GitHub Actions**.
-3. ملف `.github/workflows/pages.yml` موجود مسبقاً وسينشر الموقع تلقائياً عند كل `push`.
+2. من المستودع: **Settings → Pages → Source = Deploy from a branch**.
+3. اختر **Branch = main** و **Folder = / (root)** ثم احفظ.
+4. يظهر الرابط بعد دقيقة تقريباً: `https://USERNAME.github.io/REPO/`.
 
-### الطريقة 2 — من الفرع مباشرة
-
-**Settings → Pages → Source = Deploy from a branch → main / (root)**.
 ملف `.nojekyll` موجود حتى لا يعالج GitHub ملفات المشروع.
+
+> إذا كان لديك توكن بصلاحية `workflow` وترغب في النشر التلقائي عبر GitHub Actions،
+> أعد ملف `.github/workflows/pages.yml` ثم اضبط **Source = GitHub Actions**.
+
+### الطريقة 2 — نفس الخطوات عبر واجهة GitHub فقط
+
+ارفع الملفات بالمتصفح، ثم **Add file → Upload files**، وفعّل Pages كما في الخطوة 2.
 
 ---
 
