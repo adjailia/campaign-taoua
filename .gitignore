@@ -13,3 +13,6 @@ data/submissions-*.md
 # ملفات مؤقتة
 *.log
 .tmp/
+
+# مجلد الصور المصدرية (تُنسخ الصور المعتمدة إلى assets/img/)
+imag/

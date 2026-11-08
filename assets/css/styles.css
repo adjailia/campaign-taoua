@@ -396,7 +396,7 @@ html.is-dev .dev-hint { display: block; }
   overflow: hidden;
   border: 1px solid var(--primary-border);
   background: var(--surface-2);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1080 / 1454;
 }
 .figure-frame::after {
   content: "";
