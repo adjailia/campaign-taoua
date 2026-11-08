@@ -566,6 +566,92 @@
     });
   }
 
+  /* ---------------- عدّاد المنضمين إلى الحملة ---------------- */
+  var JOINERS_CACHE = "taoua-joiners";
+  var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoua/joiners";
+
+  function formatCount(value) {
+    try {
+      return Number(value).toLocaleString("ar-DZ-u-nu-latn");
+    } catch (err) {
+      return String(value);
+    }
+  }
+
+  function animateCount(element, from, to) {
+    var reduce = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduce || to - from > 50000 || to <= from) {
+      element.textContent = formatCount(to);
+      return;
+    }
+
+    var started = null;
+    var duration = 900;
+
+    function step(now) {
+      if (started === null) started = now;
+      var progress = Math.min((now - started) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = formatCount(Math.round(from + (to - from) * eased));
+      if (progress < 1) window.requestAnimationFrame(step);
+    }
+
+    window.requestAnimationFrame(step);
+  }
+
+  function initJoiners() {
+    var counter = $("#joiners-count");
+    if (!counter) return;
+
+    var cached = 0;
+    try {
+      cached = parseInt(localStorage.getItem(JOINERS_CACHE) || "0", 10) || 0;
+    } catch (err) {
+      cached = 0;
+    }
+    if (cached > 0) counter.textContent = formatCount(cached);
+
+    if (!window.fetch) return;
+
+    /* نزيد العدّاد مرة واحدة لكل جلسة تصفح، ونقرأ القيمة فقط عند إعادة التحميل */
+    var alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem("taoua-joiners-seen") === "1"; } catch (err) { alreadySeen = false; }
+
+    var endpoint = alreadySeen ? JOINERS_API.replace("/hit/", "/get/") : JOINERS_API;
+
+    var controller = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = controller
+      ? window.setTimeout(function () { controller.abort(); }, 5000)
+      : null;
+
+    fetch(endpoint, {
+      cache: "no-store",
+      signal: controller ? controller.signal : undefined
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        var value = Number(data && (data.value !== undefined ? data.value : data.count));
+        if (!isFinite(value) || value < 0) throw new Error("bad payload");
+
+        animateCount(counter, cached, value);
+        try {
+          localStorage.setItem(JOINERS_CACHE, String(value));
+          sessionStorage.setItem("taoua-joiners-seen", "1");
+        } catch (err) { /* ignore */ }
+      })
+      .catch(function () {
+        /* تعذّر الاتصال: نُبقي آخر قيمة محفوظة */
+      })
+      .then(function () {
+        if (timer) window.clearTimeout(timer);
+      });
+  }
+
   /* ---------------- حركات الظهور ---------------- */
   function initReveal() {
     var items = $all(".reveal");
@@ -620,6 +706,7 @@
   /* ---------------- التشغيل ---------------- */
   function boot() {
     initTheme();
+    initJoiners();
     initAdmin();
 
     var host = window.location.hostname;
