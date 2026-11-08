@@ -1,0 +1,15 @@
+# ملفات النظام والمحرر
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# قاعدة بيانات المنضمين — تحتوي معطيات شخصية، لا تُرفع
+data/submissions.md
+data/submissions-*.md
+
+# ملفات مؤقتة
+*.log
+.tmp/

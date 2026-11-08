@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعجايلية عبد الحفيظ - مرشح بلدية تاوة</title>
+    <style>
+        /* إعدادات عامة */
+        :root {
+            --primary-green: #006233; /* أخضر الجزائر */
+            --secondary-green: #0a8f4e;
+            --red: #D21034;
+            --light-bg: #f4f4f4;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container h1 {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+        }
+
+        .party-logo {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 5%;
+            background: linear-gradient(135deg, var(--white) 50%, #e8f5e9 100%);
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-left: 20px;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero-text .slogan {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--red);
+            margin-bottom: 30px;
+            border-right: 5px solid var(--primary-green);
+            padding-right: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* قسم البرنامج الانتخابي */
+        .program {
+            padding: 50px 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--red);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--light-bg);
+            padding: 30px 20px;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-green);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 5%;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* استجابة الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 30px;
+            }
+            .hero-text {
+                padding-left: 0;
+                padding-top: 30px;
+            }
+            .hero-text .slogan {
+                border-right: none;
+                border-bottom: 3px solid var(--primary-green);
+                padding-bottom: 10px;
+                padding-right: 0;
+            }
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="logo-container">
+            <span class="party-logo">RND</span>
+            <h1>حزب التجمع الوطني الديمقراطي</h1>
+        </div>
+        <div>
+            <strong>بلدية تاوة</strong>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-text">
+            <h3>مرشحكم لبلدية تاوة</h3>
+            <h2>لعجايلية عبد الحفيظ</h2>
+            <p style="color: #666; margin-bottom: 20px;">محامي</p>
+            <div class="slogan">معاً من أجل تنمية تاوة</div>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                انتخابات المجلس الشعبي البلدي - بلدية تاوة. <br>
+                صوتكم أمانة، ونعدكم بالعمل الجاد من أجل مستقبل أفضل لبلديتنا.
+            </p>
+            <a href="#contact" class="cta-btn">انضم إلى الحملة</a>
+        </div>
+        <div class="hero-image">
+            <!-- استبدل الرابط أدناه برابط صورة المرشح الحقيقية -->
+            <img src="https://via.placeholder.com/400x500/006233/ffffff?text=صورة+المرشح" alt="لعجايلية عبد الحفيظ">
+        </div>
+    </section>
+
+    <!-- قسم البرنامج الانتخابي -->
+    <section class="program" id="program">
+        <h2 class="section-title">أهدافنا التنموية</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h4>تطوير البنية التحتية</h4>
+                <p>تحسين الطرقات، الإنارة العمومية، وتوفير المرافق الأساسية في مختلف أحياء بلدية تاوة.</p>
+            </div>
+            <div class="card">
+                <h4>دعم الشباب والرياضة</h4>
+                <p>إنشاء فضاءات للشباب، دعم الجمعيات الرياضية، وفتح آفاق جديدة للاستثمار والتوظيف.</p>
+            </div>
+            <div class="card">
+                <h4>تحسين الخدمات الصحية</h4>
+                <p>العمل على تقريب الخدمات الصحية من المواطنين وتطوير المراكز الصحية بالبلدية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>حملة انتخابية: لعجايلية عبد الحفيظ - RND</p>
+        <p>انتخابات المجلس الشعبي البلدي - بلدية تاوة</p>
+        <p>© 2024 جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
