@@ -17,6 +17,7 @@
 │   ├── js/app.js               # تحميل المحتوى، الوضع الليلي، النموذج، لوحة الإدارة
 │   └── img/
 │       ├── abdhafid.jpeg               # صورة/ملصق المرشح
+│       ├── og-cover.png                # بطاقة المشاركة 1200×630
 │       ├── candidate-placeholder.svg
 │       └── favicon.svg
 ├── data/                       # ← قاعدة البيانات (ملفات Markdown)
@@ -97,8 +98,25 @@ instagram: "https://www.instagram.com/votre-compte"
 ```
 
 > مجلد `imag/` في الجذر هو مجلد الصور المصدرية، وهو مستثنى من Git.
-> صورة المشاركة الاجتماعية (`og:image`) تستخدم الصورة نفسها برابط مطلق؛
-> إذا غيّرت اسم المستودع أو الحساب فحدّث الروابط المطلقة في `<head>`.
+
+### بطاقة المشاركة الاجتماعية (Messenger / WhatsApp / Facebook)
+
+الصورة المستخدمة في معاينة الرابط هي `assets/img/og-cover.png` بمقاس **1200×630** (نسبة 1.91:1).
+هذه النسبة ضرورية: الصور العمودية تجعل Messenger يعرضها كصورة مستقلة،
+فتُفتح الصورة وحدها بدل الموقع عند النقر عليها.
+
+لتعديل البطاقة: عدّل `tools/og-cover.html` ثم أعد توليد الصورة:
+
+```powershell
+& "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless=new --disable-gpu `
+  --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 `
+  --screenshot="assets\img\og-cover.png" "http://localhost:8080/tools/og-cover.html"
+```
+
+بعد أي تغيير في البطاقة، غيّر `?v=2` في وسوم `og:image` داخل `index.html` لكسر تخزين فيسبوك المؤقت.
+
+**مهم:** شارك رابط الصفحة `https://adjailia.github.io/campaign-taoua/` وليس ملف الصورة.
+إرسال الصورة كملف لا يمكن أن يفتح الموقع — الصورة ليست رابطاً.
 
 ---
 
