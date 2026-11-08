@@ -1,0 +1,13 @@
+# توحيد نهايات الأسطر عبر الأنظمة
+* text=auto eol=lf
+
+# سكربتات Windows تحتاج CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# ملفات ثنائية
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

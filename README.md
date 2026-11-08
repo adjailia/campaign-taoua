@@ -25,8 +25,10 @@
 │   └── submissions.md          # سجل المنضمين (يُنشأ بالتصدير — غير مرفوع إلى Git)
 ├── .github/workflows/pages.yml # نشر تلقائي على GitHub Pages
 ├── .nojekyll                   # تعطيل معالجة Jekyll
+├── .gitattributes              # توحيد نهايات الأسطر (LF/CRLF)
 ├── .gitignore
 ├── serve.bat                   # تشغيل سيرفر محلي على Windows
+├── archive/                    # النسختان الأصليتان قبل الدمج (للأرشيف فقط)
 └── README.md
 ```
 
