@@ -568,7 +568,24 @@
 
   /* ---------------- عدّاد المنضمين إلى الحملة ---------------- */
   var JOINERS_CACHE = "taoua-joiners";
+  var JOINERS_SEEN = "taoua-joiners-seen-at";
+  var JOINERS_WINDOW = 5 * 60 * 1000; /* نافذة 5 دقائق: التحديث داخلها لا يُحسب زيارة جديدة */
   var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoua/joiners";
+
+  function readSeenAt() {
+    var value = 0;
+    try { value = parseInt(localStorage.getItem(JOINERS_SEEN) || "0", 10) || 0; } catch (err) { value = 0; }
+    if (!value) {
+      try { value = parseInt(sessionStorage.getItem(JOINERS_SEEN) || "0", 10) || 0; } catch (err) { value = 0; }
+    }
+    return value;
+  }
+
+  function writeSeenAt(timestamp) {
+    var text = String(timestamp || 0);
+    try { localStorage.setItem(JOINERS_SEEN, text); } catch (err) { /* ignore */ }
+    try { sessionStorage.setItem(JOINERS_SEEN, text); } catch (err) { /* ignore */ }
+  }
 
   function formatCount(value) {
     try {
@@ -625,11 +642,21 @@
 
     if (!window.fetch) return;
 
-    /* نزيد العدّاد مرة واحدة لكل جلسة تصفح، ونقرأ القيمة فقط عند إعادة التحميل */
-    var alreadySeen = false;
-    try { alreadySeen = sessionStorage.getItem("taoua-joiners-seen") === "1"; } catch (err) { alreadySeen = false; }
+    /*
+      كل زائر يُحسب «منضمّاً» مرة واحدة فقط كل 5 دقائق:
+      - التحديث أو التنقل داخل الموقع أو فتح تبويب جديد قبل انقضاء 5 دقائق → قراءة فقط (/get/)
+      - بعد مرور 5 دقائق أو أكثر → تُحتسب زيارة جديدة (/hit/)
+      الوقت محفوظ في localStorage، فيصمد حتى بعد إغلاق المتصفح.
+    */
+    var now = Date.now();
+    var lastSeen = readSeenAt();
+    var elapsed = now - lastSeen;
+    var countedRecently = lastSeen > 0 && elapsed >= 0 && elapsed < JOINERS_WINDOW;
 
-    var endpoint = alreadySeen ? JOINERS_API.replace("/hit/", "/get/") : JOINERS_API;
+    var endpoint = countedRecently ? JOINERS_API.replace("/hit/", "/get/") : JOINERS_API;
+
+    /* حجز النافذة فوراً حتى لا تُحسب تبويبات متزامنة أكثر من مرة */
+    if (!countedRecently) writeSeenAt(now);
 
     var controller = typeof AbortController === "function" ? new AbortController() : null;
     var timer = controller
@@ -650,13 +677,11 @@
 
         animateCount(counter, cached, value);
         if (label) label.textContent = joinersLabel(value);
-        try {
-          localStorage.setItem(JOINERS_CACHE, String(value));
-          sessionStorage.setItem("taoua-joiners-seen", "1");
-        } catch (err) { /* ignore */ }
+        try { localStorage.setItem(JOINERS_CACHE, String(value)); } catch (err) { /* ignore */ }
       })
       .catch(function () {
-        /* تعذّر الاتصال: نُبقي آخر قيمة محفوظة */
+        /* تعذّر الاتصال: نُبقي آخر قيمة محفوظة، ونحرّر النافذة كي تُحتسب الزيارة لاحقاً */
+        if (!countedRecently) writeSeenAt(lastSeen);
       })
       .then(function () {
         if (timer) window.clearTimeout(timer);
