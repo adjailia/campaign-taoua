@@ -23,7 +23,7 @@
 ├── data/                       # ← قاعدة البيانات (ملفات Markdown)
 │   ├── site.md                 # اسم المرشح، الشعار، السيرة، إعدادات النموذج
 │   ├── program.md              # محاور البرنامج الانتخابي
-│   ├── contact.md              # الهاتف، واتساب، البريد، العنوان، الشبكات الاجتماعية
+│   ├── contact.md              # البريد، العنوان، الشبكات الاجتماعية (اختياري: الهاتف، واتساب)
 │   └── submissions.md          # سجل المنضمين (يُنشأ بالتصدير — غير مرفوع إلى Git)
 ├── .nojekyll                   # تعطيل معالجة Jekyll
 ├── .gitattributes              # توحيد نهايات الأسطر (LF/CRLF)
@@ -75,13 +75,14 @@ form_endpoint: ""                # اتركه فارغاً للوضع التجر
 ### `data/contact.md`
 
 ```yaml
-phone: "0550 00 00 00"
-whatsapp: "+213 550 00 00 00"
 email: "campagne@example.com"
 address: "مقر الحملة، وسط بلدية تاورة"
 facebook: "https://www.facebook.com/votre-page"
 tiktok: "https://www.tiktok.com/@votre-compte"
 instagram: "https://www.instagram.com/votre-compte"
+# اختياريان — أضفهما عند توفر أرقام حقيقية:
+# phone: "0550 00 00 00"
+# whatsapp: "+213 550 00 00 00"
 ```
 
 > الأرقام والروابط الحالية **تجريبية** — استبدلها بالبيانات الحقيقية.
