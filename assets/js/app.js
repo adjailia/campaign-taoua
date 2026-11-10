@@ -708,6 +708,12 @@
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
     items.forEach(function (el) { observer.observe(el); });
+
+    /* احتياط: إن لم تُطلِق المراقبة (نافذة خاملة أو متصفح غريبة) تُظهر العناصر
+       بعد مهلة قصيرة — لا يجب أن يعتمد ظهور المحتوى على الحركة */
+    window.setTimeout(function () {
+      Array.prototype.forEach.call(items, function (el) { el.classList.add("is-visible"); });
+    }, 1500);
   }
 
   /* ---------------- شاشة تعذّر التحميل ---------------- */
