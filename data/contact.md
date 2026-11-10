@@ -4,7 +4,7 @@ subtitle: لأي استفسار أو اقتراح، أو للانضمام إلى
 phone: "0550 00 00 00"
 whatsapp: "+213 550 00 00 00"
 email: "campagne@example.com"
-address: "مقر الحملة، وسط بلدية تاوة"
+address: "مقر الحملة، وسط بلدية تاورة"
 facebook: "https://www.facebook.com/"
 tiktok: "https://www.tiktok.com/"
 instagram: "https://www.instagram.com/"

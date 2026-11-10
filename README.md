@@ -1,4 +1,4 @@
-# حملة لعجايلية عبد الحفيظ — بلدية تاوة
+# حملة لعجايلية عبد الحفيظ — بلدية تاورة
 
 صفحة حملة انتخابية واحدة (Landing Page) مبنية بـ HTML/CSS/JavaScript خالص، بلا أي إطار عمل
 وبلا اعتماد على مكتبات خارجية. المحتوى يُقرأ من ملفات **Markdown** داخل مجلد `data/`،
@@ -49,10 +49,10 @@ title_highlight: عبد الحفيظ       # الجزء الملوّن من ال
 role: محامٍ
 party: حزب التجمع الوطني الديمقراطي
 party_short: RND
-municipality: بلدية تاوة
-election: انتخابات المجلس الشعبي البلدي — بلدية تاوة
+municipality: بلدية تاورة
+election: انتخابات المجلس الشعبي البلدي — بلدية تاورة
 badge: جيل جديد.. رؤية رقمية
-slogan: معاً من أجل تنمية تاوة
+slogan: معاً من أجل تنمية تاورة
 tagline: جملة تعريفية قصيرة
 cta_primary: انضم إلى الحملة
 cta_secondary: البرنامج الانتخابي
@@ -78,7 +78,7 @@ form_endpoint: ""                # اتركه فارغاً للوضع التجر
 phone: "0550 00 00 00"
 whatsapp: "+213 550 00 00 00"
 email: "campagne@example.com"
-address: "مقر الحملة، وسط بلدية تاوة"
+address: "مقر الحملة، وسط بلدية تاورة"
 facebook: "https://www.facebook.com/votre-page"
 tiktok: "https://www.tiktok.com/@votre-compte"
 instagram: "https://www.instagram.com/votre-compte"
@@ -94,7 +94,7 @@ instagram: "https://www.instagram.com/votre-compte"
 
 ```html
 <img src="assets/img/abdhafid.jpeg"
-     alt="ملصق حملة لعجايلية عبد الحفيظ — مرشح بلدية تاوة" width="1080" height="1454">
+     alt="ملصق حملة لعجايلية عبد الحفيظ — مرشح بلدية تاورة" width="1080" height="1454">
 ```
 
 > مجلد `imag/` في الجذر هو مجلد الصور المصدرية، وهو مستثنى من Git.
@@ -115,7 +115,7 @@ instagram: "https://www.instagram.com/votre-compte"
 
 بعد أي تغيير في البطاقة، غيّر `?v=2` في وسوم `og:image` داخل `index.html` لكسر تخزين فيسبوك المؤقت.
 
-**مهم:** شارك رابط الصفحة `https://adjailia.github.io/campaign-taoua/` وليس ملف الصورة.
+**مهم:** شارك رابط الصفحة `https://adjailia.github.io/campaign-taoura/` وليس ملف الصورة.
 إرسال الصورة كملف لا يمكن أن يفتح الموقع — الصورة ليست رابطاً.
 
 ---

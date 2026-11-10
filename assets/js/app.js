@@ -5,8 +5,8 @@
 (function () {
   "use strict";
 
-  var THEME_KEY = "taoua-theme";
-  var STORE_KEY = "taoua-submissions";
+  var THEME_KEY = "taoura-theme";
+  var STORE_KEY = "taoura-submissions";
   var DATA = {
     site: "data/site.md",
     program: "data/program.md",
@@ -567,10 +567,10 @@
   }
 
   /* ---------------- عدّاد المنضمين إلى الحملة ---------------- */
-  var JOINERS_CACHE = "taoua-joiners";
-  var JOINERS_SEEN = "taoua-joiners-seen-at";
+  var JOINERS_CACHE = "taoura-joiners";
+  var JOINERS_SEEN = "taoura-joiners-seen-at";
   var JOINERS_WINDOW = 5 * 60 * 1000; /* نافذة 5 دقائق: التحديث داخلها لا يُحسب زيارة جديدة */
-  var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoua/joiners";
+  var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoura/joiners";
 
   function readSeenAt() {
     var value = 0;
