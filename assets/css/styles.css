@@ -583,6 +583,38 @@ html.is-dev .dev-hint { display: block; }
 /* ---------- الاعتماد على محتوى ---------- */
 .about-cta { margin-top: 1.6rem; }
 
+/* ---------- حقائق سريعة عن المرشح ---------- */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.about-stats li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.8rem;
+}
+.about-stats strong {
+  display: block;
+  color: var(--primary);
+  font-size: 1.3rem;
+  line-height: 1.15;
+  margin-bottom: 0.3rem;
+}
+.about-stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+@media (max-width: 420px) {
+  .about-stats { grid-template-columns: 1fr; }
+}
+
 /* ---------- قسم الانضمام ---------- */
 .join-grid {
   display: grid;
