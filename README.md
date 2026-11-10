@@ -224,6 +224,25 @@ git push -u origin main
 - يحتفظ بآخر قيمة في `localStorage` حتى لو تعطّلت الخدمة مؤقتاً.
 - لتغيير مساحة العدّاد أو مدة النافذة: عدّل `JOINERS_API` و`JOINERS_WINDOW` في `assets/js/app.js`.
 
+### ضبط القيمة يدوياً (admin key)
+
+العدّاد الحالي هو `adjailia-campaign-taoura/joiners568` (بدأ بقيمة 568).
+المفتاح الإداري محفوظ محلياً على جهازك في `.abacus-admin.local.json` (ملف غير مرفوع على Git).
+
+لقراءة القيمة:
+```powershell
+(Invoke-WebRequest "https://abacus.jasoncameron.dev/get/adjailia-campaign-taoura/joiners568").Content
+```
+
+لضبط القيمة إلى 600 (مثلاً):
+```powershell
+Invoke-WebRequest -Method Post `
+  -Uri "https://abacus.jasoncameron.dev/set/adjailia-campaign-taoura/joiners568?value=600" `
+  -Headers @{ Authorization = "Bearer YOUR_ADMIN_KEY" }
+```
+- القيمة تزيد تلقائياً من العد مع كل زيارة زائر حقيقي.
+- إن فقدت المفتاح الإداري، المفتاح القديم `joiners568` يبقى للقراءة/الضرب فقط ولا يمكن ضبطه.
+
 > بعد أي تعديل على `styles.css` أو `app.js`، غيّر رقم `?v=3` في `index.html`
 > حتى لا يستخدم الزائرون نسخة قديمة من الملفات المخزّنة في المتصفح.
 

@@ -8,6 +8,9 @@ desktop.ini
 
 # قاعدة بيانات المنضمين — تحتوي معطيات شخصية، لا تُرفع
 data/submissions.md
+
+# مفتاح إدارة عدّاد Abacus — سري، لا يُرفع
+.abacus-admin.local.json
 data/submissions-*.md
 
 # ملفات مؤقتة

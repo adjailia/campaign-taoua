@@ -570,7 +570,7 @@
   var JOINERS_CACHE = "taoura-joiners";
   var JOINERS_SEEN = "taoura-joiners-seen-at";
   var JOINERS_WINDOW = 5 * 60 * 1000; /* نافذة 5 دقائق: التحديث داخلها لا يُحسب زيارة جديدة */
-  var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoura/joiners";
+  var JOINERS_API = "https://abacus.jasoncameron.dev/hit/adjailia-campaign-taoura/joiners568";
 
   function readSeenAt() {
     var value = 0;
